@@ -69,7 +69,10 @@ const getMe = async (req, res) => {
   try {
     const user = await User.findById(req.user._id)
       .populate('enrolledCourses.course', 'title image slug category level price rating enrolledCount duration shortDescription earningsPotential');
-    
+
+    // Filter out enrollments where the course was deleted
+    user.enrolledCourses = user.enrolledCourses.filter(e => e.course != null);
+
     res.json({
       success: true,
       data: user

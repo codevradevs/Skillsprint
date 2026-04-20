@@ -44,8 +44,8 @@ export const Dashboard = () => {
     fetchData();
   }, []);
 
-  const completedEnrollments = enrollments.filter(e => e.progress === 100);
-  const inProgressCourses = user?.enrolledCourses?.filter(e => e.progress > 0 && e.progress < 100) || [];
+  const completedEnrollments = enrollments.filter(e => e.progress === 100 && e.course);
+  const inProgressCourses = user?.enrolledCourses?.filter(e => e.course && e.progress > 0 && e.progress < 100) || [];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -196,7 +196,7 @@ export const Dashboard = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
             <h2 className="text-xl font-bold text-white mb-4">My Courses</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {user.enrolledCourses.slice(0, 6).map((enrollment) => (
+              {user.enrolledCourses.filter(e => e.course).slice(0, 6).map((enrollment) => (
                 <CourseCard
                   key={enrollment.course._id}
                   course={{ ...enrollment.course, progress: enrollment.progress, isEnrolled: true }}

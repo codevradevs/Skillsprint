@@ -18,7 +18,7 @@ interface PaymentModalProps {
   courseId?: string;
   amount: number;
   courseTitle: string;
-  paymentType?: 'course' | 'subscription';
+  paymentType?: 'course' | 'subscription' | 'task' | 'certificate';
   onSuccess?: () => void;
 }
 

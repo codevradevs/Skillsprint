@@ -17,7 +17,7 @@ const getAllCourses = async (req, res) => {
     }
 
     const courses = await Course.find(query)
-      .select('title slug image price originalPrice category level rating duration enrolledCount earningsPotential shortDescription')
+      .select('title slug image price originalPrice tier taskPrice certPrice prerequisiteSlug dripDays category level rating duration enrolledCount earningsPotential shortDescription')
       .sort({ createdAt: -1 })
       .limit(limit * 1)
       .skip((page - 1) * limit);

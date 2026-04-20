@@ -121,7 +121,7 @@ export interface Payment {
   _id: string;
   user: string;
   course?: Course;
-  paymentType: 'course' | 'subscription';
+  paymentType: 'course' | 'subscription' | 'task' | 'certificate';
   phone: string;
   amount: number;
   status: 'pending' | 'success' | 'failed' | 'cancelled';
