@@ -64,7 +64,7 @@ export const enrollmentAPI = {
 };
 
 export const paymentAPI = {
-  stkPush: (data: { phone: string; amount: number; courseId?: string; paymentType?: 'course' | 'subscription' }) =>
+  stkPush: (data: { phone: string; amount: number; courseId?: string; paymentType?: 'course' | 'subscription' | 'task' | 'certificate' }) =>
     api.post('/payments/stk', data),
   testEnroll: (courseId: string) =>
     api.post('/payments/test-enroll', { courseId }),
